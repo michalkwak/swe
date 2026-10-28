@@ -1,0 +1,10 @@
+__pycache__/
+.venv/
+.pytest_cache/
+.coverage
+htmlcov/
+output.xml
+log.html
+report.html
+browser/
+playwright-log.txt
