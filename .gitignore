@@ -1,10 +1,22 @@
+# Python-generated files
 __pycache__/
-.venv/
+*.py[oc]
+
+# Virtual environments
+.venv
+
+# Testaus ja kattavuus
 .pytest_cache/
 .coverage
 htmlcov/
+coverage.xml
+
+# Robot Framework
 output.xml
 log.html
 report.html
-browser/
-playwright-log.txt
+selenium-screenshot-*.png
+
+# Editorit ja käyttöjärjestelmä
+.vscode
+.DS_Store
