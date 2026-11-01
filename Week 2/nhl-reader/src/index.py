@@ -11,10 +11,12 @@ def main():
         player = Player(player_dict)
         players.append(player)
 
-    print("Players from FIN:")
+    sorted_players = sorted(players, key=lambda player: player.points, reverse=True)
+
+    print("Players from FIN")
     print()
 
-    for player in players:
+    for player in sorted_players:
         if player.nationality == "FIN":
             print(player)
 
