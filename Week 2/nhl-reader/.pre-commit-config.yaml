@@ -3,7 +3,7 @@ repos:
   hooks:
     - id: pylint
       name: pylint
-      entry: pylint
+      entry: uv run --project "Week 2/nhl-reader" pylint
       language: system
       types: [python]
       files: ^Week 2/nhl-reader/src/
