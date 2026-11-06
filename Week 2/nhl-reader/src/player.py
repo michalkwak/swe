@@ -20,10 +20,14 @@ class Player:
 class PlayerReader:
     def __init__(self, url):
         self._url = url
+        self._players = None
 
     def get_players(self):
-        response = requests.get(self._url, timeout=10).json()
-        return [Player(player_dict) for player_dict in response]
+        if self._players is None:
+            response = requests.get(self._url, timeout=10)
+            response.raise_for_status()
+            self._players = [Player(player_dict) for player_dict in response.json()]
+        return self._players
 
 
 class PlayerStats:
