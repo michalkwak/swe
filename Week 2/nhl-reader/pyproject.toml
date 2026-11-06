@@ -7,3 +7,9 @@ dependencies = [
     "requests>=2.34.2",
     "rich>=15.0.0",
 ]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.7.0",
+    "pylint>=4.1.3",
+]

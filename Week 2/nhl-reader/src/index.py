@@ -30,28 +30,48 @@ def players_table(players, nationality, season):
     return table
 
 
-def main():
-    season = Prompt.ask("Season (e.g. 2023-24)", default=DEFAULT_SEASON).strip()
+def load_stats(season):
     reader = PlayerReader(f"{BASE_URL}/{season}/players")
-    stats = PlayerStats(reader)
 
     try:
         reader.get_players()
     except requests.RequestException as error:
-        console.print(f"[bold red]Could not fetch players for {season}:[/bold red] {error}")
+        console.print(
+            f"[bold red]Could not fetch players for {season}:[/bold red] "
+            f"{error}"
+        )
+        return None
+
+    return PlayerStats(reader)
+
+
+def show_players(stats, nationality, season):
+    players = stats.top_scorers_by_nationality(nationality)
+    if not players:
+        console.print(
+            f"[yellow]No players from {nationality} "
+            f"in season {season}[/yellow]"
+        )
+        return
+
+    console.print(players_table(players, nationality, season))
+
+
+def main():
+    season = Prompt.ask(
+        "Season (e.g. 2023-24)", default=DEFAULT_SEASON
+    ).strip()
+    stats = load_stats(season)
+    if stats is None:
         return
 
     while True:
-        nationality = Prompt.ask("Nationality (empty to quit)", default="").strip().upper()
+        nationality = Prompt.ask(
+            "Nationality (empty to quit)", default=""
+        ).strip().upper()
         if not nationality:
             break
-
-        players = stats.top_scorers_by_nationality(nationality)
-        if not players:
-            console.print(f"[yellow]No players from {nationality} in season {season}[/yellow]")
-            continue
-
-        console.print(players_table(players, nationality, season))
+        show_players(stats, nationality, season)
 
 
 if __name__ == "__main__":
