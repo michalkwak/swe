@@ -32,14 +32,6 @@ Login Should Fail With Message
     Login Page Should Be Open
     Get Text  body  *=  ${message}
 
-Set Username
-    [Arguments]  ${username}
-    Fill Text  id=username  ${username}
-
-Set Password
-    [Arguments]  ${password}
-    Fill Secret  id=password  $password
-
 Reset Application Create User And Go To Login Page
     Reset Application
     Create User  kalle  kalle123

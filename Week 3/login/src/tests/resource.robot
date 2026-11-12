@@ -36,3 +36,17 @@ Go To Login Page
 Go To Starting Page
     Go To  ${HOME_URL}
 
+Go To Register Page
+    Go To  ${REGISTER_URL}
+
+Welcome Page Should Be Open
+    Get Title  ==  Welcome to Ohtu Application!
+
+Set Username
+    [Arguments]  ${username}
+    Fill Text  id=username  ${username}
+
+Set Password
+    [Arguments]  ${password}
+    Fill Secret  id=password  $password
+
