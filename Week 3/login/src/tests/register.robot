@@ -62,6 +62,20 @@ Register With Password Containing Only Mixed Case Letters
     Click  button >> text=Register
     Register Should Fail With Message  Password must not consist of letters only
 
+Register With Matching Password And Password Confirmation
+    Set Username  pekka
+    Set Password  pekka123
+    Set Password Confirmation  pekka123
+    Click  button >> text=Register
+    Register Should Succeed
+
+Register With Password And Password Confirmation That Do Not Match
+    Set Username  pekka
+    Set Password  pekka123
+    Set Password Confirmation  pekka456
+    Click  button >> text=Register
+    Register Should Fail With Message  Passwords do not match
+
 *** Keywords ***
 Register Should Succeed
     Welcome Page Should Be Open
