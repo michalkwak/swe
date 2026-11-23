@@ -20,3 +20,6 @@ class Ostos:
         return self._lukumaara * self.tuote.hinta()
 
 # change 1
+
+# change 2
+
