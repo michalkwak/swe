@@ -18,3 +18,5 @@ class Ostos:
 
     def hinta(self):
         return self._lukumaara * self.tuote.hinta()
+
+# change 1
